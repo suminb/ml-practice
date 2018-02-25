@@ -4,16 +4,19 @@ from sklearn.preprocessing import scale
 from matplotlib import pyplot as plt
 
 
+# Mostly copied from https://medium.com/@saxenarohan97/intro-to-tensorflow-solving-a-simple-regression-problem-e87b42fd4845
+
+
 def main():
     # Get the data
     total_x = np.array([[float(x)] for x in range(50)])
     total_y = np.array([float(x) for x in range(50)])
 
-    # Keep 300 samples for training
+    # Keep some samples for training
     train_x = total_x[:30]
     train_y = total_y[:30]
 
-    # Keep 100 samples for validation
+    # Keep some samples for validation
     valid_x = total_x[30:40]
     valid_y = total_y[30:40]
 
