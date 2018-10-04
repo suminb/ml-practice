@@ -1,4 +1,4 @@
-# Digit recognizer  with Random Forest
+# https://www.kaggle.com/c/digit-recognizer
 
 import csv
 
@@ -7,12 +7,19 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
 
-def build_model():
-    train_data = pd.read_csv('train.csv')
+def load_data(filename='train.csv'):
+    train_data = pd.read_csv(filename)
 
     y = train_data['label']
     X = train_data.iloc[:, 1:]
-    train_X, val_X, train_y, val_y = train_test_split(X, y, test_size=0.25)
+
+    # Returns train_X, val_X, train_y, val_y
+    return train_test_split(X, y, test_size=0.25)
+
+
+# Default random forest model scored 0.93600 on Kaggle
+def build_model():
+    train_X, val_X, train_y, val_y = load_data()
 
     model = RandomForestClassifier(random_state=0)
     model.fit(train_X, train_y)
