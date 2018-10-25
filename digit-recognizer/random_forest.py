@@ -39,6 +39,16 @@ def lines(output_filename):
     write_output(predictions, output_filename)
 
 
+@cli.command()
+def feature_importances():
+    X, y = load_data()
+    X = append_extra_features(X)
+    train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=0)
+    model = build_model(train_X, train_y)
+    import pdb; pdb.set_trace()
+    importances = model.feature_importances_
+
+
 def load_data(filename='train.csv'):
     train_data = pd.read_csv(filename)
 
